@@ -17,8 +17,8 @@ steps:
 - name: quay
   image: plugins/docker
   settings:
-    repo: tlemarchand/mastodon-nginx
-    dockerfile: quay.io/nginx/Dockerfile
+    repo: quay.io/tlemarchand/mastodon-nginx
+    dockerfile: nginx/Dockerfile
     username:
       from_secret: quay_username
     password:
