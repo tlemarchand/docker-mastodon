@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: docker  
+- name: docker
   image: plugins/docker
   settings:
     repo: tlemarchand/mastodon-nginx
@@ -14,3 +14,16 @@ steps:
     tags:
       - latest
       - build-${DRONE_BUILD_NUMBER}
+- name: quay
+  image: plugins/docker
+  settings:
+    repo: tlemarchand/mastodon-nginx
+    dockerfile: quay.io/nginx/Dockerfile
+    username:
+      from_secret: quay_username
+    password:
+      from_secret: quay_password
+    tags:
+      - latest
+      - build-${DRONE_BUILD_NUMBER}
+    registry: quay.io
